@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Blog Template</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      /* CSS VARIABLES */
+      :root {
+        --primary: rgb(1, 1, 133);
+        --secondary: skyblue;
+        --tertiary: orangered;
+        --shadow: -5px 5px 10px 5px rgba(145, 145, 145, 0.66);
+      }
+
+      /* GLOBAL STYLES */
+      * {
+        margin: 2 px;
+        padding: 1 px;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+      .container {
+        width: 80%;
+        margin: auto;
+      }
+      button {
+        background: var(--tertiary);
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      button:hover {
+        background: darkred;
+      }
+
+      /* GLOBAL MESSAGE BAR */
+      .global-message {
+        background: var(--secondary);
+        padding: 10px 0;
+      }
+      .global-message .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .social-icons a {
+        color: var(--primary);
+        margin-left: 10px;
+        font-size: 18px;
+      }
+
+      /* HEADER */
+      header {
+        background: var(--primary);
+        padding: 15px 0;
+      }
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        width: 60px;
+        height: 60px;
+        border: 2px dotted white;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: var(--primary);
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+      }
+      nav ul li {
+        margin-left: 20px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+        padding: 5px 10px;
+      }
+      nav ul li a:hover {
+        background: var(--secondary);
+        border-radius: 5px;
+        transform: scale(1.1);
+      }
+
+      /* HERO */
+      .hero {
+        background: url("assets/hero.jpg") center/cover no-repeat;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-content {
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+      }
+      .hero-content h1 {
+        margin-bottom: 10px;
+      }
+
+      /* LATEST POSTS */
+      .latest-posts {
+        background: url("assets/bg.jpg") center/cover no-repeat;
+        padding: 50px 0;
+      }
+      .latest-flex {
+        display: flex;
+        gap: 20px;
+      }
+      .articles {
+        flex: 2;
+      }
+      article {
+        display: flex;
+        background: rgba(255, 255, 255, 0.9);
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+      }
+      article img {
+        width: 200px;
+        height: auto;
+      }
+      article .content {
+        padding: 15px;
+        flex: 1;
+      }
+      article .content h3 {
+        margin-bottom: 8px;
+      }
+      article .date {
+        font-size: 14px;
+        color: gray;
+        margin-bottom: 10px;
+      }
+      aside {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+      aside h3 {
+        margin-bottom: 10px;
+      }
+      aside ul {
+        list-style: none;
+      }
+      aside ul li {
+        margin-bottom: 8px;
+      }
+      aside ul li a {
+        text-decoration: none;
+        color: var(--primary);
+      }
+
+      /* RECOMMENDATIONS */
+      .recommendations {
+        padding: 50px 0;
+        text-align: center;
+      }
+      .card-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .card {
+        background: white;
+        width: 250px;
+        box-shadow: var(--shadow);
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .card-content {
+        padding: 15px;
+        flex: 1;
+      }
+      .card button i {
+        margin-left: 5px;
+        transition: transform 0.3s;
+      }
+      .card button:hover i {
+        transform: translateX(5px);
+      }
+
+      /* SUBSCRIBE */
+      .subscribe {
+        background: var(--secondary);
+        padding: 40px 0;
+        text-align: center;
+      }
+      .subscribe form {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .subscribe input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 200px;
+      }
+
+      /* FOOTER */
+      footer {
+        background: #000;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .latest-flex {
+          flex-direction: column;
+        }
+        article {
+          flex-direction: column;
+        }
+        article img {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- GLOBAL MESSAGE -->
+    <section class="global-message">
+      <div class="container">
+        <p>Welcome to our Travel Blog!</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/" target="_blank"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a href="https://www.linkedin.com/feed/" target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="https://www.youtube.com/" target="_blank"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEADER -->
+    <header>
+      <div class="container">
+        <div class="logo">LOGO</div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+
+    <div class="hero-content">
+      <h1>Welcome to my Travel Blog</h1>
+      <hr />
+      <p>Discover new places and adventures with us!</p>
+    </div>
+
+    <!-- LATEST POSTS -->
+
+    <div class="container latest-flex">
+      <div class="articles">
+        <article>
+          <img src="assets/a.jpg" />
+          <div class="content">
+            <h3>Trip to the mountains</h3>
+            <p class="date">
+              <i class="fa-regular fa-calendar"></i> March 10, 2024
+            </p>
+            <p>Exploring the beautiful landscapes and nature trails.</p>
+            <button>Read More</button>
+          </div>
+        </article>
+        <article>
+          <img src="assets/b.jpg" alt="" />
+          <div class="content">
+            <h3>Beachside relaxation</h3>
+            <p class="date">
+              <i class="fa-regular fa-calendar"></i> April 5, 2024
+            </p>
+            <p>Enjoying sunny days and ocean views.</p>
+            <button>Read More</button>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <h3>Read by Country</h3>
+        <ul>
+          <li><a href="#">USA</a></li>
+          <li><a href="#">France</a></li>
+          <li><a href="#">Japan</a></li>
+        </ul>
+        <h3 style="margin-top: 20px">Read by Date</h3>
+        <ul>
+          <li><a href="#">2024</a></li>
+          <li><a href="#">2023</a></li>
+          <li><a href="#">2022</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- RECOMMENDATIONS -->
+    <div class="container">
+      <h2>Recommended Destinations</h2>
+      <div class="card-container">
+        <div class="card">
+          <img src="assets/c.jpg" alt="" />
+          <div class="card-content">
+            <h3>Sunny Valley</h3>
+            <p>Experience the golden sunrise over the hills.</p>
+            <button>Explore <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/d.jpg" alt="" />
+          <div class="card-content">
+            <h3>Blue Lake</h3>
+            <p>A calm and peaceful retreat by the waters.</p>
+            <button>Explore <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/e.jpg" alt="" />
+          <div class="card-content">
+            <h3>Mountain Peaks</h3>
+            <p>Reach the summit and enjoy breathtaking views.</p>
+            <button>Explore <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/f.jpg" alt="" />
+          <div class="card-content">
+            <h3>Coastal Escape</h3>
+            <p>Relax by the sandy shores and turquoise seas.</p>
+            <button>Explore <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSCRIBE -->
+
+    <div class="container">
+      <h2>Subscribe to receive the latest articles!</h2>
+      <form>
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2024 Travel Blog | Made by Roshan Magar</p>
+    </footer>
+  </body>
+</html>
